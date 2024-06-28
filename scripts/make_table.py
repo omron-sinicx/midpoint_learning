@@ -1,10 +1,10 @@
 import numpy as np
 
-probs = [("Matsumoto_-1", 6, 10, [64, 64], 0.1),
-         ("CarLikeDisk3-0.2", 6, 5, [400, 300, 300], 0.2),
-         ("Obstacle4Outer", 6, 5, [400, 300, 300], 0.1),
-         ("Panda5", 6, 5, [400, 300, 300], 0.2),
-         ("MultiAgent-3-0.5", 6, 5, [400, 300, 300], 0.2)
+probs = [("Matsumoto_-1", 6, 10, [64, 64], 0.1, 1),
+         ("CarLikeDisk3-0.2", 6, 5, [400, 300, 300], 0.2, 1),
+         ("Obstacle4Outer", 6, 5, [400, 300, 300], 0.1, 2),
+         ("Panda5", 6, 5, [400, 300, 300], 0.2, 0),
+         ("MultiAgent-3-0.5", 6, 5, [400, 300, 300], 0.2, 1)
 ]
 
 algos = [("ACDQT-","Our-T"),
@@ -13,22 +13,29 @@ algos = [("ACDQT-","Our-T"),
          ("Inter-","Inter"),
          ("Alpha2-","2:1"),
          ("Cut-","Cut"),
-]         
+]
 
-for prob, depth, N, net_arch, eps in probs:
+for prob, depth, N, net_arch, eps, winner in probs:
     ress = np.load("../data/"+prob+"_compare.npy")
     print(prob)
     valid_alogs = []
     for i in range(len(algos)):
         if ress[:,i,:,0].sum() >= N * 5:
             valid_alogs.append((i, algos[i][1]))
+    for i, name_i in valid_alogs[:-1]:
+        if i == winner:
+            print('& \\textbf{'+ algos[i][1]+ '}', end = "")
+        else:
             print('&', algos[i][1], end = "")
     print("\\\\\n\\hline")
-    for i, name_i in valid_alogs:
-        print(name_i, end = "")
-        for j, name_j in valid_alogs:
-            if i == j:
-                print("&-",end="")
+    for i, name_i in valid_alogs[1:]:
+        if i == winner:
+            print('\\textbf{'+ name_i + '}', end = "")
+        else:
+            print(name_i, end = "")
+        for j, name_j in valid_alogs[:-1]:
+            if i <= j:
+                print("& ",end="")
                 continue
             rates = []
             percs = []
@@ -45,5 +52,8 @@ for prob, depth, N, net_arch, eps in probs:
                 percs.append(100*all_c/100)
             rates = np.array(rates)
             percs = np.array(percs)
-            print(f"& ${np.mean(rates):.0f} \pm {np.std(rates)/np.sqrt(len(rates)):.0f}$ (${np.mean(percs):.0f}$)", end = "")
+            if i == winner or j == winner:
+                print('& $\\mathbf{' + f"{np.mean(rates):.0f} \pm {np.std(rates)/np.sqrt(len(rates)):.0f}\,({np.mean(percs):.0f})" + "}$", end = "")
+            else:
+                print(f"& ${np.mean(rates):.0f} \pm {np.std(rates)/np.sqrt(len(rates)):.0f}\,({np.mean(percs):.0f})$", end = "")
         print("\\\\")
