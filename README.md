@@ -1,15 +1,19 @@
-This is a repository for the following paper:
+# Generation of Geodesics with Actor-Critic Reinforcement Learning to Predict Midpoints
+
+This is a repository for [the following paper](https://arxiv.org/abs/2407.01991):
 - Kazumi Kasaura. 2024. “Generation of Geodesics with Actor-Critic Reinforcement Learning to Predict Midpoints”
 
 It contains all scripts and a dockerfile to reproduce our experiments.
 
 Contents in [scripts/SGT_PG/](scripts/SGT_PG/) are modified contents in https://github.com/tomjur/SGT-PG.
 
-# Building an environment
+## Expreriments
+
+### Building an environment
 
 You can use [Dockerfile](Dockerfile) to build an environment.
 
-# Experiments
+### Running
 
 [scripts/learn.py](scripts/learn.py) is the main script for our proposed methods. You can specify the environment, method variants, and hyperparameters with arguments.
 
@@ -30,7 +34,7 @@ bash run.sh
 cd ..
 ```
 
-# Viewing Results
+### Viewing Results
 
 After all experiments are done, results can be plotted by a script [scripts/show_graph_4.py](scripts/show_graph_4.py).
 
@@ -52,4 +56,17 @@ python3 visualize_multiagents.py
 python3 compare_cost.py
 python3 make_table.py
 cd ..
+```
+
+## License
+This software is released under the MIT License, see [LICENSE](LICENSE).
+
+## Citation
+```
+@article{kasaura2024generation,
+  title={Generation of Geodesics with Actor-Critic Reinforcement Learning to Predict Midpoints},
+  author={Kasaura, Kazumi},
+  journal={arXiv preprint arXiv:2407.01991},
+  year={2024}
+}
 ```
