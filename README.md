@@ -7,7 +7,7 @@ It contains all scripts and a dockerfile to reproduce our experiments.
 
 Contents in [scripts/SGT_PG/](scripts/SGT_PG/) are modified contents in https://github.com/tomjur/SGT-PG.
 
-## Expreriments
+## Experiments
 
 ### Building an environment
 
