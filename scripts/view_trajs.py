@@ -30,7 +30,7 @@ from pick_space import pick_space
 space, eval_episodes = pick_space(space_name)
 dim = space.dim
 
-
+fig = plt.figure(figsize = (7, 8.3))
 
 ax = fig.add_subplot(1,1,1)
 ax.set_xlim(-0.5, 0.4)
