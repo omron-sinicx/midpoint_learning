@@ -1,11 +1,11 @@
 # Generation of Geodesics with Actor-Critic Reinforcement Learning to Predict Midpoints
 
-This is a repository for [the following paper](https://arxiv.org/abs/2407.01991):
-- Kazumi Kasaura. 2024. “Generation of Geodesics with Actor-Critic Reinforcement Learning to Predict Midpoints”
+This is a repository for [the following paper](https://jmlr.org/papers/v26/24-1020.html):
+- Kazumi Kasaura. “Generation of Geodesics with Actor-Critic Reinforcement Learning to Predict Midpoints”, *Journal of Machine Learning Research*, 26(212):1-36, 2025.
 
 It contains all scripts and a dockerfile to reproduce our experiments.
 
-Contents in [scripts/SGT_PG/](scripts/SGT_PG/) are modified contents in https://github.com/tomjur/SGT-PG.
+The contents of [scripts/SGT_PG/](scripts/SGT_PG/) are a modification of the contents of https://github.com/tomjur/SGT-PG.
 
 ## Experiments
 
@@ -62,6 +62,23 @@ cd ..
 This software is released under the MIT License, see [LICENSE](LICENSE).
 
 ## Citation
+
+### JMLR version
+
+```
+@article{JMLR:v26:24-1020,
+  author  = {Kazumi Kasaura},
+  title   = {Generation of Geodesics with Actor-Critic Reinforcement Learning to Predict Midpoints},
+  journal = {Journal of Machine Learning Research},
+  year    = {2025},
+  volume  = {26},
+  number  = {212},
+  pages   = {1--36},
+  url     = {http://jmlr.org/papers/v26/24-1020.html}
+}
+```
+
+### arXiv version
 ```
 @article{kasaura2024generation,
   title={Generation of Geodesics with Actor-Critic Reinforcement Learning to Predict Midpoints},
